@@ -16,9 +16,11 @@ import com.example.quiz.request.CreateQuizReq;
 import com.example.quiz.request.UpdateQuizReq;
 import com.example.quiz.respomse.BasicInfoRes;
 import com.example.quiz.respomse.CreateQuizRes;
+import com.example.quiz.respomse.FrontQuizListRes;
 import com.example.quiz.respomse.GetAllQuizRes;
 import com.example.quiz.respomse.GetQuizDetailRes;
 import com.example.quiz.respomse.QuestionRes;
+import com.example.quiz.vo.FrontQuizVo;
 import com.example.quiz.vo.QuestionVo;
 import com.example.quiz.vo.QuizListVo;
 
@@ -233,5 +235,28 @@ public class QuizService {
         res.setQuestionList(questionResList);
 
         return res;
+    }
+    
+ // 查詢給填問卷者看的問卷列表
+    public FrontQuizListRes getFrontQuizList() {
+
+    	// 從資料庫查 published = true 的問卷
+    	List<Quiz> quizList = quizDao.getPublishedQuizList();
+
+    	// 準備回傳給前端的資料
+    	List<FrontQuizVo> voList = new ArrayList<>();
+
+    	for (Quiz quiz : quizList) {
+    		FrontQuizVo vo = new FrontQuizVo(
+    				quiz.getId(),
+    				quiz.getTitle(),
+    				quiz.getStartDate(),
+    				quiz.getEndDate()
+    		);
+
+    		voList.add(vo);
+    	}
+
+    	return new FrontQuizListRes(200, "查詢成功", voList);
     }
 }

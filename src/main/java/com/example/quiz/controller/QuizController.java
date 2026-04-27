@@ -15,6 +15,7 @@ import com.example.quiz.request.CreateQuizReq;
 import com.example.quiz.request.UpdateQuizReq;
 import com.example.quiz.respomse.BasicInfoRes;
 import com.example.quiz.respomse.CreateQuizRes;
+import com.example.quiz.respomse.FrontQuizListRes;
 import com.example.quiz.respomse.GetAllQuizRes;
 import com.example.quiz.respomse.GetQuizDetailRes;
 import com.example.quiz.service.QuizService;
@@ -56,5 +57,11 @@ public class QuizController {
 	@GetMapping("/get/{quizId}")
 	public GetQuizDetailRes getQuizById(@PathVariable("quizId") Integer quizId) {
 		return quizService.getQuizById(quizId);
+	}
+	
+	// 填問卷者查詢可填寫問卷列表
+	@GetMapping("/front/getAll")
+	public FrontQuizListRes getFrontQuizList() {
+		return quizService.getFrontQuizList();
 	}
 }

@@ -39,4 +39,8 @@ public interface QuizDao extends JpaRepository<Quiz, Integer> {
 	//查單筆詳細資料
 	@Query(value = "select * from quiz where id = ?1" , nativeQuery = true)
 	public Quiz getQuizById(Integer quizId);
+	
+	// 查詢給填問卷者看的問卷，只顯示已發布資料
+	@Query(value = "select * from quiz where published = 1 order by id desc" , nativeQuery = true)
+	public List<Quiz> getPublishedQuizList();
 }
