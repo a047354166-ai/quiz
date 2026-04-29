@@ -53,23 +53,23 @@ public class UserFillenService {
 		
 		//email不可空白
 		if (!StringUtils.hasText(req.getEmail())) {
-			return new UserFillenLoginRes(400, "Email 不可為空", null, null, null);
+			return new UserFillenLoginRes(400, "Email 不可為空", null, null, null, 0);
 		}
 				
 		//密碼不可為空
 		if (!StringUtils.hasText(req.getPassword())) {
-			return new UserFillenLoginRes(400, "密碼不可為空", null, null, null);
+			return new UserFillenLoginRes(400, "密碼不可為空", null, null, null, 0);
 			}
 		
 		//查詢帳號及密碼是否存在
 		UserFillen user = userFillenDao.findByEmailAnfPassword(req.getEmail(), req.getPassword());
 		if(user == null) {
-			return new UserFillenLoginRes(400, "帳號密碼錯誤", null, null, null);
+			return new UserFillenLoginRes(400, "帳號密碼錯誤", null, null, null, 0);
 			
 		}
 		
 		//登入成功
-		return new UserFillenLoginRes(200, "登入成功", user.getUserId(), user.getEmail(), user.getPassward());
+		return new UserFillenLoginRes(200, "登入成功", user.getUserId(), user.getEmail(), user.getName(),user.getAge());
 		
 	}
 	

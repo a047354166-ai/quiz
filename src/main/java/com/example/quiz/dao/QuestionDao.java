@@ -29,4 +29,8 @@ public interface QuestionDao extends JpaRepository<Question, QuestionId>{
 	@Query(value = "select * from question where quiz_id = ?1 order by question_id asc", nativeQuery = true)
 	public List<Question> getQuestionsByQuizId(Integer quizId);
 	
+	//用 quizId 和 questionId 查題目
+	@Query(value = "select * from question where quiz_id = ?1 and question_id = ?2", nativeQuery = true)
+	public Question getQuestionById(Integer quizId, Integer questionId);
+	
 }

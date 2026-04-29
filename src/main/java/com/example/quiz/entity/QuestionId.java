@@ -37,12 +37,16 @@ public class QuestionId implements Serializable{
 	}
 	
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (!(o instanceof QuestionId)) return false;
-		QuestionId that = (QuestionId) o;
-		return Objects.equals(quizId, that.quizId) &&
-			   Objects.equals(questionId, that.questionId);
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof QuestionId)) {
+			return false;
+		}
+		QuestionId other = (QuestionId) obj;
+		return Objects.equals(quizId, other.quizId)
+				&& Objects.equals(questionId, other.questionId);
 	}
 
 	@Override

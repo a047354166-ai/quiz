@@ -11,19 +11,28 @@ public class UserFillenLoginRes {
 	private String email;
 
 	private String name;
+	
+	private int age;
 
 	public UserFillenLoginRes() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public UserFillenLoginRes(int code, String message) {
+		this.code = code;
+		this.message = message;
+	}
 
-	public UserFillenLoginRes(int code, String message, Integer userId, String email, String name) {
+
+	public UserFillenLoginRes(int code, String message, Integer userId, String email, String name, int age) {
 		super();
 		this.code = code;
 		this.message = message;
 		this.userId = userId;
 		this.email = email;
 		this.name = name;
+		this.age = age;
 	}
 
 	public int getCode() {
@@ -65,6 +74,15 @@ public class UserFillenLoginRes {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
 	
 	
 }
