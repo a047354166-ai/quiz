@@ -18,6 +18,7 @@ import com.example.quiz.respomse.CreateQuizRes;
 import com.example.quiz.respomse.FrontQuizListRes;
 import com.example.quiz.respomse.GetAllQuizRes;
 import com.example.quiz.respomse.GetQuizDetailRes;
+import com.example.quiz.respomse.QuizResultRes;
 import com.example.quiz.service.QuizService;
 
 @RestController
@@ -63,5 +64,11 @@ public class QuizController {
 	@GetMapping("/front/getAll")
 	public FrontQuizListRes getFrontQuizList() {
 		return quizService.getFrontQuizList();
+	}
+	
+	// 查詢問卷結果
+	@GetMapping("/result/{quizId}")
+	public QuizResultRes getQuizResult(@PathVariable("quizId") Integer quizId) {
+		return quizService.getQuizResult(quizId);
 	}
 }

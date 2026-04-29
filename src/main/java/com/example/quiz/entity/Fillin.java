@@ -14,11 +14,11 @@ import jakarta.persistence.Table;
 public class Fillin {
 
 	@Id
-	@Column(name = "`quiz_id`")
+	@Column(name = "quiz_id")
 	private Integer quizId;
 
 	@Id
-	@Column(name = "`question_id`")
+	@Column(name = "question_id")
 	private Integer questionId;
 
 	@Id
